@@ -1,2 +1,21 @@
 <h1>Hello World!</h1>
 <div id="hello_world"></div>
+<button id="click_me_button">Click me</button>
+<ul id="hello_world_list">
+  <li>Hello World start</li>
+</ul>
+
+<script type="text/javascript">
+
+  const clickMeButtonEl = document.getElementById("click_me_button");
+  const helloWorldListEl = document.getElementById("hello_world_list");
+
+  var addHelloWorldToList = function (event){
+    var itemEl = document.createElement("li");
+    itemEl.innerHTML = "Hello World!";
+    helloWorldListEl.appendChild(itemEl);
+  }
+
+  clickMeButtonEl.addEventListener("click", addHelloWorldToList);
+
+</script>
