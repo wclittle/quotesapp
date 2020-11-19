@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+h1 {color: green}
+#hello_world {
+  background-image: url(image-path('hello_world.png'));
+  width: 388px;
+  height: 100px;
+  border: 1px solid black;
+}
