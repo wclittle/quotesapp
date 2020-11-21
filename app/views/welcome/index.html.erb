@@ -19,3 +19,7 @@
   clickMeButtonEl.addEventListener("click", addHelloWorldToList);
 
 </script>
+
+<% quote = Quote.first %> 
+<p>"<%= quote.content %>" -<%= quote.author_name %></p>
+
