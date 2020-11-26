@@ -29,3 +29,15 @@
     <li>Hello World Stimulus.js Start</li>
   </ul>
 </div>
+
+<h2>Create a Quote</h2>
+<%= form_with model: @quote, url: '/create-quote', local: true do |f| %>
+  Quote: <br /> <%= f.text_area :content, required: true %> <br />
+  Author: <br /> <%= f.text_field :author_name, required: true %> 
+  <br /><br />
+  <%= f.submit "Create Quote" %>
+<% end %>
+
+<ul id="quotes_list">
+  <%= render partial: 'quote', collection: @quotes %> 
+</ul>
