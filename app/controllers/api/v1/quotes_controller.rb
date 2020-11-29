@@ -35,6 +35,13 @@ class Api::V1::QuotesController < ApplicationController
       selector: "#quote-#{params[:id]}"
     )    
     cable_ready.broadcast
+    ActionCable.server.broadcast("hello_quotes", {
+        type: "RQA::DeleteQuoteSuccess", 
+        response: {
+          data: params[:id].to_i
+        }
+      }
+    )    
     respond_to do |format|
       format.json { render json: params[:id] }
     end       

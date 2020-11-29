@@ -6,5 +6,12 @@ class QuotesReflex < StimulusReflex::Reflex
     cable_ready['hello_quotes'].remove(
       selector: "#quote-#{id}"
     )
+    ActionCable.server.broadcast("hello_quotes", {
+        type: "RQA::DeleteQuoteSuccess", 
+        response: {
+          data: id.to_i
+        }
+      }
+    )      
   end
 end
