@@ -26,7 +26,6 @@ class WelcomeController < ApplicationController
         }
       }
     )    
-    redirect_to root_path
   end
 
   private 
