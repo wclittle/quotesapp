@@ -11,3 +11,4 @@ export const getQuote = (state, id) => QuotesSelect.getQuote(state.get('quotes')
 export const getQuotesIds = (state) => QuotesSelect.getQuotesIds(state.get('quotes'));
 export const getQuotesLoaded = (state) => QuotesSelect.getQuotesLoaded(state.get('quotes'));
 export const getQuotesLoading = (state) => QuotesSelect.getQuotesLoading(state.get('quotes'));
+export const getCreatingQuote = (state) => QuotesSelect.getCreatingQuote(state.get('quotes'));

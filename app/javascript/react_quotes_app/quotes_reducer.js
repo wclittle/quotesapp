@@ -16,6 +16,8 @@ function allIds(state = DEFAULT_LIST, action) {
   switch (action.type) {
   case actions.FETCH_QUOTES_SUCCESS:
     return new List(action.response.result);
+  case actions.CREATE_QUOTE_SUCCESS: 
+    return state.insert(0, action.response.result);
   default:
     return state;
   }
@@ -27,6 +29,18 @@ function loading(state = false, action) {
     return true;
   case actions.FETCH_QUOTES_SUCCESS:
   case actions.FETCH_QUOTES_FAILURE:
+    return false; 
+  default:
+    return state;
+  }
+}
+
+function creating(state = false, action) {
+  switch (action.type) {
+  case actions.CREATE_QUOTE_REQUEST:
+    return true;
+  case actions.CREATE_QUOTE_SUCCESS:
+  case actions.CREATE_QUOTE_FAILURE:
     return false; 
   default:
     return state;
@@ -48,7 +62,8 @@ export const QuotesReducer = combineReducers({
   byId,
   allIds,
   loading,
-  loaded,  
+  loaded,
+  creating,
 }, () => DEFAULT_STATE);
 
 export const getQuote = (state, id) =>
@@ -62,5 +77,8 @@ export const getQuotesLoading = (state) =>
 
 export const getQuotesLoaded = (state) =>
   state.get('loaded') ;
+
+export const getCreatingQuote = (state) =>
+  state.get('creating') ;
 
 export default QuotesReducer;

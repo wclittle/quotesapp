@@ -15,6 +15,10 @@ axios.interceptors.request.use((config) => {
 });
 
 const normalizeQuotes = response => normalize(response.data, [schema.quote]);
+const normalizeQuote = response => normalize(response.data, schema.quote);
 
 export const fetchQuotes = () =>
   axios.get('/api/v1/quotes').then(normalizeQuotes);
+
+export const createQuote = (content, author) =>
+  axios.post('/api/v1/quotes', {content, author}).then(normalizeQuote);
