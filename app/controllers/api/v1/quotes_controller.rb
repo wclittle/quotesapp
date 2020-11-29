@@ -17,4 +17,14 @@ class Api::V1::QuotesController < ApplicationController
       format.json { render json: quote }
     end    
   end
+  def destroy
+    Quote.find(params[:id]).destroy
+    cable_ready['hello_quotes'].remove(
+      selector: "#quote-#{params[:id]}"
+    )    
+    cable_ready.broadcast
+    respond_to do |format|
+      format.json { render json: params[:id] }
+    end       
+  end
 end

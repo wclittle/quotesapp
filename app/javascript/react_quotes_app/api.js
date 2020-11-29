@@ -22,3 +22,6 @@ export const fetchQuotes = () =>
 
 export const createQuote = (content, author) =>
   axios.post('/api/v1/quotes', {content, author}).then(normalizeQuote);
+
+export const deleteQuote = (id) =>
+  axios.delete(`/api/v1/quotes/${id}`);

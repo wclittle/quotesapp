@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/quotes', to: 'quotes#index', as: 'quotes'
       post '/quotes', to: 'quotes#create', as: 'create_quote'
+      delete '/quotes/:id', to: 'quotes#destroy', as: 'destroy_quote'
     end
   end
 end

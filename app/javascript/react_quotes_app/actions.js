@@ -7,6 +7,9 @@ const ACTIONS = {
   CREATE_QUOTE_REQUEST: 'RQA::CreateQuoteRequest',
   CREATE_QUOTE_SUCCESS: 'RQA::CreateQuoteSuccess',
   CREATE_QUOTE_FAILURE: 'RQA::CreateQuoteFailure',
+  DELETE_QUOTE_REQUEST: 'RQA::DeleteQuoteRequest',
+  DELETE_QUOTE_SUCCESS: 'RQA::DeleteQuoteSuccess',
+  DELETE_QUOTE_FAILURE: 'RQA::DeleteQuoteFailure',    
 } 
 
 const genericAPI = (action, request, success, failure, errorMessage, meta = {}) => (dispatch) => {
@@ -34,5 +37,14 @@ export const createQuote = (content, author) =>
     ACTIONS.CREATE_QUOTE_FAILURE,
     'Failed to create quote',
   );
+
+export const deleteQuote = (id) =>
+  genericAPI(
+    () => api.deleteQuote(id),
+    ACTIONS.DELETE_QUOTE_REQUEST,
+    ACTIONS.DELETE_QUOTE_SUCCESS,
+    ACTIONS.DELETE_QUOTE_FAILURE,
+    'Failed to delete quote',
+  );  
 
 export default ACTIONS;

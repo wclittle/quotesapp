@@ -9,6 +9,9 @@ function byId(state = DEFAULT_MAP, action) {
   if (action.response && action.response.entities && action.response.entities.quotes) {
     return state.merge((new Map(action.response.entities.quotes)).map(props => new Map(props)));
   }
+  if (action.response && action.response.data){
+    return state.delete(action.response.data.toString())
+  }
   return state;
 }
 
@@ -18,6 +21,8 @@ function allIds(state = DEFAULT_LIST, action) {
     return new List(action.response.result);
   case actions.CREATE_QUOTE_SUCCESS: 
     return state.insert(0, action.response.result);
+  case actions.DELETE_QUOTE_SUCCESS:
+    return state.remove(state.indexOf(action.response.data));
   default:
     return state;
   }

@@ -4,15 +4,25 @@ import { Map } from 'immutable'
 
 const propTypes = {
   quote: PropTypes.instanceOf(Map),
+  deleteQuote: PropTypes.func.isRequired,  
 }
 
 const defaultProps = {};
 
 const QuoteView = ({
-  quote, 
+  quote,
+  deleteQuote,
 }) => {
+
+  const handleClick = () => {
+    deleteQuote(quote.get('id'))
+  }
+
   return (
-    <li>"{quote.get('content')}" - {quote.get('author_name')}</li>
+    <li onClick={handleClick}>
+      "{quote.get('content')}" 
+      - {quote.get('author_name')}
+    </li>
   )
 }
 
