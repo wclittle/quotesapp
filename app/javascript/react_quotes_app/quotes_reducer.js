@@ -26,7 +26,11 @@ function allIds(state = DEFAULT_LIST, action) {
       return state.insert(0, action.response.result);
     }
   case actions.DELETE_QUOTE_SUCCESS:
-    return state.remove(state.indexOf(action.response.data));
+    if (state.indexOf(action.response.data) > -1){
+      return state.remove(state.indexOf(action.response.data));
+    }else{
+      return state; 
+    }
   default:
     return state;
   }
