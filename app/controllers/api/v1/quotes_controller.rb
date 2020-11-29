@@ -12,7 +12,19 @@ class Api::V1::QuotesController < ApplicationController
       position: 'afterBegin',
       html: render_to_string(partial: 'welcome/quote.html.erb', locals: {quote: quote})
     )    
-    cable_ready.broadcast    
+    cable_ready.broadcast
+    ActionCable.server.broadcast("hello_quotes", {
+        type: "RQA::CreateQuoteSuccess", 
+        response: {
+          entities: {
+            quotes: {
+              "#{quote.id}": quote
+            }
+          },
+          result: quote.id
+        }
+      }
+    )
     respond_to do |format|
       format.json { render json: quote }
     end    

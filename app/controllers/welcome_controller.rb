@@ -14,6 +14,18 @@ class WelcomeController < ApplicationController
       html: render_to_string(partial: 'quote', locals: {quote: quote})
     )
     cable_ready.broadcast
+    ActionCable.server.broadcast("hello_quotes", {
+        type: "RQA::CreateQuoteSuccess", 
+        response: {
+          entities: {
+            quotes: {
+              "#{quote.id}": quote
+            }
+          },
+          result: quote.id
+        }
+      }
+    )    
     redirect_to root_path
   end
 

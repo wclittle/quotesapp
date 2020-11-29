@@ -20,7 +20,11 @@ function allIds(state = DEFAULT_LIST, action) {
   case actions.FETCH_QUOTES_SUCCESS:
     return new List(action.response.result);
   case actions.CREATE_QUOTE_SUCCESS: 
-    return state.insert(0, action.response.result);
+    if (state.indexOf(action.response.result) > -1){
+      return state;
+    }else{
+      return state.insert(0, action.response.result);
+    }
   case actions.DELETE_QUOTE_SUCCESS:
     return state.remove(state.indexOf(action.response.data));
   default:
