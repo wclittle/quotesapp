@@ -30,16 +30,19 @@
   </ul>
 </div>
 
-<h2>Create a Quote</h2>
-<%= form_with model: @quote, url: '/create-quote', id: 'rails_quote_form' do |f| %>
-  Quote: <br /> <%= f.text_area :content, required: true %> <br />
-  Author: <br /> <%= f.text_field :author_name, required: true %> 
-  <br /><br />
-  <%= f.submit "Create Quote" %>
-<% end %>
+<h2>Rails Quotes</h2>
+
+<%= render partial: 'quotes_form', locals: {prefix: nil} %>
 
 <ul id="quotes_list">
-  <%= render partial: 'quote', collection: @quotes %> 
-</ul>
+  <%= render partial: 'quote', collection: @quotes, locals: {prefix: nil} %> 
+</ul>  
 
 <%= react_component 'ReactQuotesApp' %>
+
+<%= turbo_stream_from 'hello_turbo' %>
+
+<turbo-frame id="turbo_quotes" src="/turbo-quotes">
+  <p>Loading...</p>
+</turbo-frame>
+

@@ -6,26 +6,14 @@ class WelcomeController < ApplicationController
     @quotes = Quote.all.order(created_at: :desc)
   end
 
+  def turbo_quotes
+    @quote = Quote.new
+    @quotes = Quote.all.order(created_at: :desc)
+    @prefix = "turbo-"
+  end
+
   def create_quote 
-    quote = Quote.create(quote_params)
-    cable_ready['hello_quotes'].insert_adjacent_html(
-      selector: '#quotes_list',
-      position: 'afterBegin',
-      html: render_to_string(partial: 'quote', locals: {quote: quote})
-    )
-    cable_ready.broadcast
-    ActionCable.server.broadcast("hello_quotes", {
-        type: "RQA::CreateQuoteSuccess", 
-        response: {
-          entities: {
-            quotes: {
-              "#{quote.id}": quote
-            }
-          },
-          result: quote.id
-        }
-      }
-    )    
+    Quote.create(quote_params)  
   end
 
   private 

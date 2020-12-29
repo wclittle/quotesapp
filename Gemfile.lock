@@ -193,9 +193,8 @@ GEM
       redis
     thor (1.0.1)
     tilt (2.0.10)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
+    turbo-rails (0.5.1)
+      rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     web-console (4.1.0)
@@ -224,7 +223,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
-  cable_ready (~> 4.3)
   capybara (>= 2.15)
   jbuilder (~> 2.7)
   listen (~> 3.2)
@@ -237,8 +235,8 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  stimulus_reflex (~> 3.3)
-  turbolinks (~> 5)
+  stimulus_reflex (~> 3.4)
+  turbo-rails
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
@@ -248,4 +246,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.1.4
+   2.2.3

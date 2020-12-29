@@ -1,0 +1,7 @@
+<turbo-frame id="turbo_quotes">
+  <h2>Turbo Quotes</h2>
+  <%= render partial: 'quotes_form', locals: {prefix: 'turbo-'} %>
+  <ul id="quotes_list_turbo">
+    <%= render partial: 'quote', collection: @quotes, locals: {prefix: 'turbo-'} %> 
+  </ul>  
+</turbo-frame>
