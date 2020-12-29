@@ -1,24 +1,5 @@
-# README
+# Technical Founder Training
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This code respository corresponds to the series [Learn to code with skills for business, product design, and collaboration: a curriculum for entrepreneurs](https://satchel.works/@wclittle/learn-to-code-as-an-entrepreneur).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Visit the link above for documentation, motivation, and background. Feel free to reach out to will@wclittle.com with any questions/sugggestions. Thanks!
