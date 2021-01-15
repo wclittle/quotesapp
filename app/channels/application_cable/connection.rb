@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module ApplicationCable
+  # Top-level methods for web socket connections
   class Connection < ActionCable::Connection::Base
     identified_by :session_id
 
