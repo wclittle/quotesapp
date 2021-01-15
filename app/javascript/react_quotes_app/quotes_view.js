@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import { List } from 'immutable'
-import Quote from './quote_container'
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { List } from "immutable";
+import Quote from "./quote_container";
 
 const propTypes = {
   quotesIds: PropTypes.instanceOf(List).isRequired,
@@ -10,36 +10,36 @@ const propTypes = {
   fetchQuotes: PropTypes.func.isRequired,
   createQuote: PropTypes.func.isRequired,
   creatingQuote: PropTypes.bool,
-}
+};
 
 const defaultProps = {
   quotesLoaded: false,
   quotesLoading: false,
-  creatingQuote: false, 
+  creatingQuote: false,
 };
 
 const QuotesView = ({
   quotesIds,
   quotesLoaded,
-  quotesLoading, 
+  quotesLoading,
   fetchQuotes,
   createQuote,
-  creatingQuote, 
+  creatingQuote,
 }) => {
   useEffect(() => {
-    if (!quotesLoaded){
+    if (!quotesLoaded) {
       fetchQuotes();
     }
-  }, [quotesLoaded, fetchQuotes])
+  }, [quotesLoaded, fetchQuotes]);
 
   const [content, setContent] = useState("");
   const [authorName, setAuthorName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createQuote(content, authorName)
+    createQuote(content, authorName);
     e.target.reset();
-  }
+  };
 
   return (
     <div>
@@ -51,11 +51,11 @@ const QuotesView = ({
           <textarea
             name="content"
             id="RQA_quote_content"
-            onChange={e => setContent(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
             title="Quote"
             required
           ></textarea>
-        </div>  
+        </div>
         <div>
           <label htmlFor="author_name">Author:</label>
           <br />
@@ -63,30 +63,28 @@ const QuotesView = ({
             type="text"
             name="author_name"
             id="RQA_quote_author_name"
-            onChange={e => setAuthorName(e.target.value)}
+            onChange={(e) => setAuthorName(e.target.value)}
             title="Author"
             required
           />
-        </div>  
-        <br /> 
-        {!creatingQuote ? 
+        </div>
+        <br />
+        {!creatingQuote ? (
           <button type="submit">Create Quote</button>
-          :
-          <button type="submit" disabled>Creating Quote...</button>
-        }
-                     
+        ) : (
+          <button type="submit" disabled>
+            Creating Quote...
+          </button>
+        )}
       </form>
-      {quotesLoading ? 
-        <p>Loading...</p>
-        : 
-        <p>Here is your list of quotes:</p>
-      }
+      {quotesLoading ? <p>Loading...</p> : <p>Here is your list of quotes:</p>}
       <ul>
-        {quotesIds && quotesIds.map(id => <Quote key={`quote-${id}`} id={id} />)} 
-      </ul>    
+        {quotesIds &&
+          quotesIds.map((id) => <Quote key={`quote-${id}`} id={id} />)}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
 QuotesView.propTypes = propTypes;
 QuotesView.defaultProps = defaultProps;

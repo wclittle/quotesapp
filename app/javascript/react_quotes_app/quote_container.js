@@ -1,7 +1,7 @@
-import { connect } from 'react-redux'
-import QuoteView from './quote_view'
-import { getQuote } from './reducer'
-import { deleteQuote } from './actions'
+import { connect } from "react-redux";
+import QuoteView from "./quote_view";
+import { getQuote } from "./reducer";
+import { deleteQuote } from "./actions";
 
 const mapStateToProps = (state, { id }) => {
   return {
@@ -10,9 +10,9 @@ const mapStateToProps = (state, { id }) => {
 };
 
 const mapDispatchToProps = {
-  deleteQuote
+  deleteQuote,
 };
 
-const QuoteContainer = connect(mapStateToProps, mapDispatchToProps)(QuoteView)
+const QuoteContainer = connect(mapStateToProps, mapDispatchToProps)(QuoteView);
 
-export default QuoteContainer
+export default QuoteContainer;
