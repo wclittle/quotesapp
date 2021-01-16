@@ -16,7 +16,7 @@ class Quote < ApplicationRecord
     cable_ready['hello_quotes'].insert_adjacent_html(
       selector: '#quotes_list',
       position: 'afterBegin',
-      html: ApplicationController.new.render_to_string(partial: 'welcome/quote.html.erb',
+      html: ApplicationController.new.render_to_string(partial: 'welcome/quote',
                                                        locals: { quote: self, prefix: nil })
     ).broadcast
 

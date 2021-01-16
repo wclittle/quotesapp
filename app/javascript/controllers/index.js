@@ -7,4 +7,3 @@ const application = Application.start();
 const context = require.context(".", true, /\.js$/);
 application.load(definitionsFromContext(context));
 StimulusReflex.initialize(application, { consumer });
-

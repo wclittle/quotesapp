@@ -21,7 +21,9 @@
 </script>
 
 <% quote = Quote.first %> 
-<p>"<%= quote.content %>" -<%= quote.author_name %></p>
+<% if quote.present? %> 
+  <p>"<%= quote.content %>" -<%= quote.author_name %></p>
+<% end %> 
 
 <div data-controller="hello">
   <button data-action="hello#addHelloWorld">Click me</button>

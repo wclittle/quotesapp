@@ -70,7 +70,9 @@ const QuotesView = ({
         </div>
         <br />
         {!creatingQuote ? (
-          <button type="submit">Create Quote</button>
+          <button id="RQA_quote_submit" type="submit">
+            Create Quote
+          </button>
         ) : (
           <button type="submit" disabled>
             Creating Quote...
@@ -78,7 +80,7 @@ const QuotesView = ({
         )}
       </form>
       {quotesLoading ? <p>Loading...</p> : <p>Here is your list of quotes:</p>}
-      <ul>
+      <ul id="RQA_quotes_list">
         {quotesIds &&
           quotesIds.map((id) => <Quote key={`quote-${id}`} id={id} />)}
       </ul>
